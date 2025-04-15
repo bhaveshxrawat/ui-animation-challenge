@@ -1,0 +1,16 @@
+.main {
+  margin-top: 2rem;
+
+  ul {
+    list-style: none;
+    text-align: center;
+
+    li {
+      font-size: 1.25rem;
+
+      svg {
+        vertical-align: middle
+      }
+    }
+  }
+}

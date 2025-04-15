@@ -11,22 +11,30 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
+import { Route as ChallengesIndexImport } from './routes/challenges/index'
+import { Route as ChallengesFluidMenuAnimationImport } from './routes/challenges/fluid-menu-animation'
 
 // Create/Update Routes
-
-const AboutRoute = AboutImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
 } as any)
+
+const ChallengesIndexRoute = ChallengesIndexImport.update({
+  id: '/challenges/',
+  path: '/challenges/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ChallengesFluidMenuAnimationRoute =
+  ChallengesFluidMenuAnimationImport.update({
+    id: '/challenges/fluid-menu-animation',
+    path: '/challenges/fluid-menu-animation',
+    getParentRoute: () => rootRoute,
+  } as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -39,11 +47,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutImport
+    '/challenges/fluid-menu-animation': {
+      id: '/challenges/fluid-menu-animation'
+      path: '/challenges/fluid-menu-animation'
+      fullPath: '/challenges/fluid-menu-animation'
+      preLoaderRoute: typeof ChallengesFluidMenuAnimationImport
+      parentRoute: typeof rootRoute
+    }
+    '/challenges/': {
+      id: '/challenges/'
+      path: '/challenges'
+      fullPath: '/challenges'
+      preLoaderRoute: typeof ChallengesIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +68,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/challenges/fluid-menu-animation': typeof ChallengesFluidMenuAnimationRoute
+  '/challenges': typeof ChallengesIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/challenges/fluid-menu-animation': typeof ChallengesFluidMenuAnimationRoute
+  '/challenges': typeof ChallengesIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/challenges/fluid-menu-animation': typeof ChallengesFluidMenuAnimationRoute
+  '/challenges/': typeof ChallengesIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths: '/' | '/challenges/fluid-menu-animation' | '/challenges'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/challenges/fluid-menu-animation' | '/challenges'
+  id: '__root__' | '/' | '/challenges/fluid-menu-animation' | '/challenges/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
+  ChallengesFluidMenuAnimationRoute: typeof ChallengesFluidMenuAnimationRoute
+  ChallengesIndexRoute: typeof ChallengesIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
+  ChallengesFluidMenuAnimationRoute: ChallengesFluidMenuAnimationRoute,
+  ChallengesIndexRoute: ChallengesIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +117,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about"
+        "/challenges/fluid-menu-animation",
+        "/challenges/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/about": {
-      "filePath": "about.tsx"
+    "/challenges/fluid-menu-animation": {
+      "filePath": "challenges/fluid-menu-animation.tsx"
+    },
+    "/challenges/": {
+      "filePath": "challenges/index.tsx"
     }
   }
 }

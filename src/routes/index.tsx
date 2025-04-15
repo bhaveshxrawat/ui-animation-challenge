@@ -1,14 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Navigate } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  component: () => <Navigate to={"/challenges"} />,
 });
-
-function Index() {
-  return (
-    <>
-      <header>Peerlist UI Animation Challenge</header>
-      <main></main>
-    </>
-  );
-}

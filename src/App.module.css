@@ -1,0 +1,11 @@
+.appContainer {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 1.25rem 1rem;
+
+  header {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+  }
+}
