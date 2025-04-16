@@ -11,12 +11,12 @@ function Index() {
     <div className={styles.appContainer}>
       <header>
         Peerlist UI Animation Challenge{" "}
-        <small>
+        {/* <small>
           - by{" "}
           <a href="https://bhaveshrawat.dev" target="_blank">
             Bhavesh Rawat
           </a>
-        </small>
+        </small> */}
       </header>
       <Home />
     </div>
