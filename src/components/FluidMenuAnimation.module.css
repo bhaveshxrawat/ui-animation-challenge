@@ -6,6 +6,21 @@
   grid-template-rows: auto 1fr;
   padding: 1rem;
 
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    >a {
+      text-decoration: none;
+
+      svg {
+        translate: 0 2px;
+        margin-right: 4px;
+      }
+    }
+  }
+
   main {
     display: flex;
     align-items: center;

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import styles from "./Home.module.css";
-import { Link as LinkIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 function Home() {
   return (
@@ -8,7 +8,7 @@ function Home() {
       <ul>
         <li>
           <Link to="./fluid-menu-animation">
-            <LinkIcon size={16} /> Fluid Menu Animation
+            Day 1. Fluid Menu Animation <ArrowRight size={16} />
           </Link>
         </li>
       </ul>
