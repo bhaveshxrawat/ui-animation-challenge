@@ -1,10 +1,9 @@
 import { HeadContent, Link } from "@tanstack/react-router";
-import scopedStyles from "./FluidMenuAnimation.module.css";
+import scopedStyles from "./DynamicStatusIndicator.module.css";
 import commonStyles from "./common.module.css";
-import FluidMenuBtn from "./FluidMenuBtn";
 import { ArrowLeft } from "lucide-react";
 
-function FluidMenuAnimation() {
+function DynamicStatusIndicator() {
   return (
     <html>
       <head>
@@ -12,16 +11,13 @@ function FluidMenuAnimation() {
       </head>
       <div className={scopedStyles.container}>
         <header className={commonStyles.commonHeader}>
-          <FluidMenuBtn />
           <Link to="../">
             <ArrowLeft size="16" /> Back
           </Link>
         </header>
-        <main>
-          <h2>Open the menu in the top-left corner.</h2>
-        </main>
+        <main></main>
       </div>
     </html>
   );
 }
-export default FluidMenuAnimation;
+export default DynamicStatusIndicator;

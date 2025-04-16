@@ -11,6 +11,11 @@ function Home() {
             Day 1. Fluid Menu Animation <ArrowRight size={16} />
           </Link>
         </li>
+        <li>
+          <Link to="./dynamic-status-indicator">
+            Day 2. Dynamic Status Indicator <ArrowRight size={16} />
+          </Link>
+        </li>
       </ul>
     </main>
   );

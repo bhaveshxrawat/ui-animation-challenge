@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as ChallengesIndexImport } from './routes/challenges/index'
 import { Route as ChallengesFluidMenuAnimationImport } from './routes/challenges/fluid-menu-animation'
+import { Route as ChallengesDynamicStatusIndicatorImport } from './routes/challenges/dynamic-status-indicator'
 
 // Create/Update Routes
 
@@ -36,6 +37,13 @@ const ChallengesFluidMenuAnimationRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
+const ChallengesDynamicStatusIndicatorRoute =
+  ChallengesDynamicStatusIndicatorImport.update({
+    id: '/challenges/dynamic-status-indicator',
+    path: '/challenges/dynamic-status-indicator',
+    getParentRoute: () => rootRoute,
+  } as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -45,6 +53,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/challenges/dynamic-status-indicator': {
+      id: '/challenges/dynamic-status-indicator'
+      path: '/challenges/dynamic-status-indicator'
+      fullPath: '/challenges/dynamic-status-indicator'
+      preLoaderRoute: typeof ChallengesDynamicStatusIndicatorImport
       parentRoute: typeof rootRoute
     }
     '/challenges/fluid-menu-animation': {
@@ -68,12 +83,14 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/challenges/dynamic-status-indicator': typeof ChallengesDynamicStatusIndicatorRoute
   '/challenges/fluid-menu-animation': typeof ChallengesFluidMenuAnimationRoute
   '/challenges': typeof ChallengesIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/challenges/dynamic-status-indicator': typeof ChallengesDynamicStatusIndicatorRoute
   '/challenges/fluid-menu-animation': typeof ChallengesFluidMenuAnimationRoute
   '/challenges': typeof ChallengesIndexRoute
 }
@@ -81,27 +98,43 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/challenges/dynamic-status-indicator': typeof ChallengesDynamicStatusIndicatorRoute
   '/challenges/fluid-menu-animation': typeof ChallengesFluidMenuAnimationRoute
   '/challenges/': typeof ChallengesIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/challenges/fluid-menu-animation' | '/challenges'
+  fullPaths:
+    | '/'
+    | '/challenges/dynamic-status-indicator'
+    | '/challenges/fluid-menu-animation'
+    | '/challenges'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/challenges/fluid-menu-animation' | '/challenges'
-  id: '__root__' | '/' | '/challenges/fluid-menu-animation' | '/challenges/'
+  to:
+    | '/'
+    | '/challenges/dynamic-status-indicator'
+    | '/challenges/fluid-menu-animation'
+    | '/challenges'
+  id:
+    | '__root__'
+    | '/'
+    | '/challenges/dynamic-status-indicator'
+    | '/challenges/fluid-menu-animation'
+    | '/challenges/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChallengesDynamicStatusIndicatorRoute: typeof ChallengesDynamicStatusIndicatorRoute
   ChallengesFluidMenuAnimationRoute: typeof ChallengesFluidMenuAnimationRoute
   ChallengesIndexRoute: typeof ChallengesIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChallengesDynamicStatusIndicatorRoute: ChallengesDynamicStatusIndicatorRoute,
   ChallengesFluidMenuAnimationRoute: ChallengesFluidMenuAnimationRoute,
   ChallengesIndexRoute: ChallengesIndexRoute,
 }
@@ -117,12 +150,16 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/challenges/dynamic-status-indicator",
         "/challenges/fluid-menu-animation",
         "/challenges/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/challenges/dynamic-status-indicator": {
+      "filePath": "challenges/dynamic-status-indicator.tsx"
     },
     "/challenges/fluid-menu-animation": {
       "filePath": "challenges/fluid-menu-animation.tsx"
