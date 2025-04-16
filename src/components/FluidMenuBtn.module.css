@@ -1,5 +1,6 @@
 .btnContainer {
   position: relative;
+  display: inline-block;
 }
 
 .btn {

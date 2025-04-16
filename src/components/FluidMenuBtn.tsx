@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { House, Mail, Settings, User } from "lucide-react";
 import styles from "./FluidMenuBtn.module.css";
 import { useEffect, useId, useRef, useState } from "react";
+import { useClickOutside } from "@/hooks/useClickOutside";
 
 function FluidMenuBtn() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +36,12 @@ function FluidMenuBtn() {
     hasMounted.current = true;
   }, []);
 
+  function closeMenu() {
+    setIsOpen(false);
+  }
+
+  const ref = useClickOutside<HTMLDivElement>(closeMenu);
+
   const btns = [
     {
       label: "Go to Homepage",
@@ -55,7 +62,7 @@ function FluidMenuBtn() {
   ];
 
   return (
-    <div className={styles.btnContainer}>
+    <div className={styles.btnContainer} ref={ref}>
       <button
         className={styles.btn}
         role="menuitem"
