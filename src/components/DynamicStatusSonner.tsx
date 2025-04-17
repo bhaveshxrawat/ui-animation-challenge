@@ -16,33 +16,40 @@ function DynamicStatusSonner() {
     return () => clearInterval(timerId);
   });
   return (
-    <div aria-live="polite">
-      <motion.div className={`${styles.sonner} ${styles[currentState]}`} layout>
-        <motion.span>
-          {currentState === "progress" && <Spinner />}
-          {currentState === "success" && <CircleCheck size={18} />}
-          {currentState === "error" && <TriangleAlert size={18} />}
-        </motion.span>
-        <AnimatePresence mode="popLayout">
-          <motion.strong
-            key={currentState}
-            initial={{
-              x: currentState === "progress" ? "-100%" : "100%",
-              opacity: 0,
-            }}
-            animate={{ x: "0", opacity: 1 }}
-            exit={{
-              x: currentState === "progress" ? "-100%" : "100%",
-              opacity: 0,
-            }}
-          >
-            {currentState === "progress" && "Analyzing Transaction"}
-            {currentState === "success" && "Transaction Safe"}
-            {currentState === "error" && "Transaction Warning"}
-          </motion.strong>
-        </AnimatePresence>
-      </motion.div>
-    </div>
+    <motion.div
+      className={`${styles.sonner} ${styles[currentState]}`}
+      layout
+      aria-live="polite"
+      role="alert"
+    >
+      <motion.span>
+        {currentState === "progress" && <Spinner aria-hidden="true" />}
+        {currentState === "success" && (
+          <CircleCheck size={18} aria-hidden="true" />
+        )}
+        {currentState === "error" && (
+          <TriangleAlert size={18} aria-hidden="true" />
+        )}
+      </motion.span>
+      <AnimatePresence mode="popLayout">
+        <motion.strong
+          key={currentState}
+          initial={{
+            x: currentState === "progress" ? "-100%" : "100%",
+            opacity: 0,
+          }}
+          animate={{ x: "0", opacity: 1 }}
+          exit={{
+            x: currentState === "progress" ? "-100%" : "100%",
+            opacity: 0,
+          }}
+        >
+          {currentState === "progress" && "Analyzing Transaction"}
+          {currentState === "success" && "Transaction Safe"}
+          {currentState === "error" && "Transaction Warning"}
+        </motion.strong>
+      </AnimatePresence>
+    </motion.div>
   );
 }
 export default DynamicStatusSonner;
