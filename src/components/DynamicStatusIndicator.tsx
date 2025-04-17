@@ -6,7 +6,7 @@ import DynamicStatusSonner from "./DynamicStatusSonner";
 
 function DynamicStatusIndicator() {
   return (
-    <div className={scopedStyles.container}>
+    <div className={`${commonStyles.container} ${scopedStyles.container}`}>
       <header className={commonStyles.commonHeader}>
         <Link to="../">
           <ArrowLeft size="16" /> Back

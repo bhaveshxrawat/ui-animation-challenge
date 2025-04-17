@@ -1,11 +1,4 @@
 .container {
-  min-height: 100vh;
-  min-height: 100svh;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: auto 1fr;
-  padding: 1rem;
-
   header {
     display: flex;
     justify-content: space-between;

@@ -16,6 +16,11 @@ function Home() {
             Day 2. Dynamic Status Indicator <ArrowRight size={16} />
           </Link>
         </li>
+        <li>
+          <Link to="./animated-checkbox">
+            Day 3. Animated Checkbox <ArrowRight size={16} />
+          </Link>
+        </li>
       </ul>
     </main>
   );

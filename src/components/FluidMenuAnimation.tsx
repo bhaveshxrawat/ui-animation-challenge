@@ -10,7 +10,7 @@ function FluidMenuAnimation() {
       <head>
         <HeadContent />
       </head>
-      <div className={scopedStyles.container}>
+      <div className={`${commonStyles.container} ${scopedStyles.container}`}>
         <header className={commonStyles.commonHeader}>
           <FluidMenuBtn />
           <Link to="../">
