@@ -15,6 +15,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as ChallengesIndexImport } from './routes/challenges/index'
 import { Route as ChallengesFluidMenuAnimationImport } from './routes/challenges/fluid-menu-animation'
 import { Route as ChallengesDynamicStatusIndicatorImport } from './routes/challenges/dynamic-status-indicator'
+import { Route as ChallengesAnimatedCheckboxImport } from './routes/challenges/animated-checkbox'
 
 // Create/Update Routes
 
@@ -44,6 +45,14 @@ const ChallengesDynamicStatusIndicatorRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
+const ChallengesAnimatedCheckboxRoute = ChallengesAnimatedCheckboxImport.update(
+  {
+    id: '/challenges/animated-checkbox',
+    path: '/challenges/animated-checkbox',
+    getParentRoute: () => rootRoute,
+  } as any,
+)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -53,6 +62,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/challenges/animated-checkbox': {
+      id: '/challenges/animated-checkbox'
+      path: '/challenges/animated-checkbox'
+      fullPath: '/challenges/animated-checkbox'
+      preLoaderRoute: typeof ChallengesAnimatedCheckboxImport
       parentRoute: typeof rootRoute
     }
     '/challenges/dynamic-status-indicator': {
@@ -83,6 +99,7 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/challenges/animated-checkbox': typeof ChallengesAnimatedCheckboxRoute
   '/challenges/dynamic-status-indicator': typeof ChallengesDynamicStatusIndicatorRoute
   '/challenges/fluid-menu-animation': typeof ChallengesFluidMenuAnimationRoute
   '/challenges': typeof ChallengesIndexRoute
@@ -90,6 +107,7 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/challenges/animated-checkbox': typeof ChallengesAnimatedCheckboxRoute
   '/challenges/dynamic-status-indicator': typeof ChallengesDynamicStatusIndicatorRoute
   '/challenges/fluid-menu-animation': typeof ChallengesFluidMenuAnimationRoute
   '/challenges': typeof ChallengesIndexRoute
@@ -98,6 +116,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/challenges/animated-checkbox': typeof ChallengesAnimatedCheckboxRoute
   '/challenges/dynamic-status-indicator': typeof ChallengesDynamicStatusIndicatorRoute
   '/challenges/fluid-menu-animation': typeof ChallengesFluidMenuAnimationRoute
   '/challenges/': typeof ChallengesIndexRoute
@@ -107,18 +126,21 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/challenges/animated-checkbox'
     | '/challenges/dynamic-status-indicator'
     | '/challenges/fluid-menu-animation'
     | '/challenges'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/challenges/animated-checkbox'
     | '/challenges/dynamic-status-indicator'
     | '/challenges/fluid-menu-animation'
     | '/challenges'
   id:
     | '__root__'
     | '/'
+    | '/challenges/animated-checkbox'
     | '/challenges/dynamic-status-indicator'
     | '/challenges/fluid-menu-animation'
     | '/challenges/'
@@ -127,6 +149,7 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChallengesAnimatedCheckboxRoute: typeof ChallengesAnimatedCheckboxRoute
   ChallengesDynamicStatusIndicatorRoute: typeof ChallengesDynamicStatusIndicatorRoute
   ChallengesFluidMenuAnimationRoute: typeof ChallengesFluidMenuAnimationRoute
   ChallengesIndexRoute: typeof ChallengesIndexRoute
@@ -134,6 +157,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChallengesAnimatedCheckboxRoute: ChallengesAnimatedCheckboxRoute,
   ChallengesDynamicStatusIndicatorRoute: ChallengesDynamicStatusIndicatorRoute,
   ChallengesFluidMenuAnimationRoute: ChallengesFluidMenuAnimationRoute,
   ChallengesIndexRoute: ChallengesIndexRoute,
@@ -150,6 +174,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/challenges/animated-checkbox",
         "/challenges/dynamic-status-indicator",
         "/challenges/fluid-menu-animation",
         "/challenges/"
@@ -157,6 +182,9 @@ export const routeTree = rootRoute
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/challenges/animated-checkbox": {
+      "filePath": "challenges/animated-checkbox.tsx"
     },
     "/challenges/dynamic-status-indicator": {
       "filePath": "challenges/dynamic-status-indicator.tsx"
