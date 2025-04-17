@@ -5,4 +5,42 @@
   grid-auto-flow: column;
   grid-template-rows: auto 1fr;
   padding: 1rem;
+
+  main {
+    place-self: center;
+  }
+
+  .sonner {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 25vw;
+    font-size: 1.25rem;
+    overflow: clip;
+
+    &.progress {
+      background-color: #e2f1fd;
+      color: #4ea2f6;
+    }
+
+    &.success {
+      background-color: #d7f2d8;
+      color: #29c14c;
+    }
+
+    &.error {
+      background-color: #ffdfdc;
+      color: #fe3637;
+    }
+
+    >span {
+      display: flex;
+      align-items: center;
+    }
+
+    >strong span {
+      display: inline-block;
+    }
+  }
 }
