@@ -1,6 +1,5 @@
 import { useState } from "react";
 import scopedStyles from "./AnimatedCheckbox.module.css";
-import { Check } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
 interface CheckboxItem {
