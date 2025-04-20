@@ -15,6 +15,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as ChallengesIndexImport } from './routes/challenges/index'
 import { Route as ChallengesFluidMenuAnimationImport } from './routes/challenges/fluid-menu-animation'
 import { Route as ChallengesDynamicStatusIndicatorImport } from './routes/challenges/dynamic-status-indicator'
+import { Route as ChallengesAnimatedTogglesImport } from './routes/challenges/animated-toggles'
 import { Route as ChallengesAnimatedCheckboxImport } from './routes/challenges/animated-checkbox'
 
 // Create/Update Routes
@@ -45,6 +46,12 @@ const ChallengesDynamicStatusIndicatorRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
+const ChallengesAnimatedTogglesRoute = ChallengesAnimatedTogglesImport.update({
+  id: '/challenges/animated-toggles',
+  path: '/challenges/animated-toggles',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const ChallengesAnimatedCheckboxRoute = ChallengesAnimatedCheckboxImport.update(
   {
     id: '/challenges/animated-checkbox',
@@ -69,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/challenges/animated-checkbox'
       fullPath: '/challenges/animated-checkbox'
       preLoaderRoute: typeof ChallengesAnimatedCheckboxImport
+      parentRoute: typeof rootRoute
+    }
+    '/challenges/animated-toggles': {
+      id: '/challenges/animated-toggles'
+      path: '/challenges/animated-toggles'
+      fullPath: '/challenges/animated-toggles'
+      preLoaderRoute: typeof ChallengesAnimatedTogglesImport
       parentRoute: typeof rootRoute
     }
     '/challenges/dynamic-status-indicator': {
@@ -100,6 +114,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/challenges/animated-checkbox': typeof ChallengesAnimatedCheckboxRoute
+  '/challenges/animated-toggles': typeof ChallengesAnimatedTogglesRoute
   '/challenges/dynamic-status-indicator': typeof ChallengesDynamicStatusIndicatorRoute
   '/challenges/fluid-menu-animation': typeof ChallengesFluidMenuAnimationRoute
   '/challenges': typeof ChallengesIndexRoute
@@ -108,6 +123,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/challenges/animated-checkbox': typeof ChallengesAnimatedCheckboxRoute
+  '/challenges/animated-toggles': typeof ChallengesAnimatedTogglesRoute
   '/challenges/dynamic-status-indicator': typeof ChallengesDynamicStatusIndicatorRoute
   '/challenges/fluid-menu-animation': typeof ChallengesFluidMenuAnimationRoute
   '/challenges': typeof ChallengesIndexRoute
@@ -117,6 +133,7 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/challenges/animated-checkbox': typeof ChallengesAnimatedCheckboxRoute
+  '/challenges/animated-toggles': typeof ChallengesAnimatedTogglesRoute
   '/challenges/dynamic-status-indicator': typeof ChallengesDynamicStatusIndicatorRoute
   '/challenges/fluid-menu-animation': typeof ChallengesFluidMenuAnimationRoute
   '/challenges/': typeof ChallengesIndexRoute
@@ -127,6 +144,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/challenges/animated-checkbox'
+    | '/challenges/animated-toggles'
     | '/challenges/dynamic-status-indicator'
     | '/challenges/fluid-menu-animation'
     | '/challenges'
@@ -134,6 +152,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/challenges/animated-checkbox'
+    | '/challenges/animated-toggles'
     | '/challenges/dynamic-status-indicator'
     | '/challenges/fluid-menu-animation'
     | '/challenges'
@@ -141,6 +160,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/challenges/animated-checkbox'
+    | '/challenges/animated-toggles'
     | '/challenges/dynamic-status-indicator'
     | '/challenges/fluid-menu-animation'
     | '/challenges/'
@@ -150,6 +170,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChallengesAnimatedCheckboxRoute: typeof ChallengesAnimatedCheckboxRoute
+  ChallengesAnimatedTogglesRoute: typeof ChallengesAnimatedTogglesRoute
   ChallengesDynamicStatusIndicatorRoute: typeof ChallengesDynamicStatusIndicatorRoute
   ChallengesFluidMenuAnimationRoute: typeof ChallengesFluidMenuAnimationRoute
   ChallengesIndexRoute: typeof ChallengesIndexRoute
@@ -158,6 +179,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChallengesAnimatedCheckboxRoute: ChallengesAnimatedCheckboxRoute,
+  ChallengesAnimatedTogglesRoute: ChallengesAnimatedTogglesRoute,
   ChallengesDynamicStatusIndicatorRoute: ChallengesDynamicStatusIndicatorRoute,
   ChallengesFluidMenuAnimationRoute: ChallengesFluidMenuAnimationRoute,
   ChallengesIndexRoute: ChallengesIndexRoute,
@@ -175,6 +197,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/challenges/animated-checkbox",
+        "/challenges/animated-toggles",
         "/challenges/dynamic-status-indicator",
         "/challenges/fluid-menu-animation",
         "/challenges/"
@@ -185,6 +208,9 @@ export const routeTree = rootRoute
     },
     "/challenges/animated-checkbox": {
       "filePath": "challenges/animated-checkbox.tsx"
+    },
+    "/challenges/animated-toggles": {
+      "filePath": "challenges/animated-toggles.tsx"
     },
     "/challenges/dynamic-status-indicator": {
       "filePath": "challenges/dynamic-status-indicator.tsx"

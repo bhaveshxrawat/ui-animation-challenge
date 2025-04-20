@@ -21,6 +21,11 @@ function Home() {
             Day 3. Animated Checkbox <ArrowRight size={16} />
           </Link>
         </li>
+        <li>
+          <Link to="./animated-toggles">
+            Day 4. Animated Toggles <ArrowRight size={16} />
+          </Link>
+        </li>
       </ul>
     </main>
   );
