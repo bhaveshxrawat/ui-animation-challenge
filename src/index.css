@@ -17,12 +17,17 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  body {
+  :is(body, figure, p) {
     margin: 0;
   }
 
   a {
     color: inherit;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
   }
 
   :is(button, [role="button"]) {
